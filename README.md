@@ -17,10 +17,7 @@ powershell ./patch_Joplin.ps1
 
 
 ## CSS
-- Features
-  - Flyout Table of Contents on pages with [[toc]]
-
-Copy/paste contents of 'userstyle.css' into Joplin's settings: Appearance > Custom stylesheet for rendered Markdown
+Copy/paste contents of 'userstyle*.css' into Joplin's settings: Appearance > Custom stylesheet for rendered Markdown
 
 
 ## Other options
