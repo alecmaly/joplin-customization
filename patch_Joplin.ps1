@@ -39,14 +39,14 @@ if ($action -eq [patch_action]::rebase) {
 
 
 # uid to identify if file has been modified
-$uid = '3dc86858-24fd-406f-b534-2544c0e515bf'
+$uid_marker = '3dc86858-24fd-406f-b534-2544c0e515bf'
 
 $target = "$base_path\app\app.js"
 $data = get-content -Path $target -Raw
 
-if (!$data.Contains($uid)) {
+if (!$data.Contains($uid_marker)) {
     write-host [+] updating
-    $newcontent = $data.replace('return null;', "require('.\\joplin_inject_code.js') //$uid`n`t`t`t`t`t`treturn null;")
+    $newcontent = $data.replace('return null;', "require('.\\joplin_inject_code.js') //$uid_marker`n`t`t`t`t`t`treturn null;")
     Set-Content $target -Value $newcontent
 }
 

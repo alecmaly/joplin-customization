@@ -1,0 +1,74 @@
+/* For styling the rendered Markdown */
+
+body {
+  line-height: 100%;
+}
+
+li {
+  margin-bottom: 3px;
+}
+
+nav.table-of-contents ul {
+	list-style-type: none;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+nav.table-of-contents>ul {
+
+	top: 5px;
+	right: 0px;
+	z-index: 99;
+	
+	font-size: 12px;
+	position: fixed;
+	padding: 15px;
+	
+	border-radius: 10px 0px 0px 10px;
+	margin: 0px;
+	
+	overflow: hidden;
+	height: 90%;
+	width: 5px;
+	transition: .2s;
+}
+
+nav.table-of-contents::after {
+	content: "[TOC - move your cursor to the right edge]";
+	color: black;
+}
+
+
+nav.table-of-contents>ul {
+	background: #F8F8F8;
+	box-shadow: -5px 0px 10px 0px rgba(0,0,0,0.15);
+
+	width: 20%;
+	color: none;
+	overflow: scroll;
+}
+
+nav.table-of-contents>ul::before {
+	content: "TABLE OF CONTENTS"
+}
+
+nav.table-of-contents>ul li {
+	display: list-item;
+}
+
+nav.table-of-contents li {
+	display: none;
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 0px;
+	padding: 0px;
+}
+
+
+#rendered-md {
+  width: 100%;
+}
+
+#joplin-container-content {
+  width: 75%
+}
