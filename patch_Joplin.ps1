@@ -7,10 +7,8 @@ enum patch_action {
 
 
 ####  script variables
-$customJS_path = '.\\joplin_inject_code.js'
 $action = [patch_action]::rebase
 ####
-
 
 
 $base_path = 'C:\Users\alecm\AppData\Local\Programs\Joplin\resources'
@@ -22,7 +20,7 @@ if ($action -eq [patch_action]::rebase) {
       exit
     }
     
-    write-host [+] removing old app directory
+    write-host [+] removing old app directory (if exists)
     rm -Recurse -Force -Path $base_path\app\ 2>$null
 
     if (!(Test-Path -path "$base_path/app.asar")) {
@@ -48,11 +46,12 @@ $data = get-content -Path $target -Raw
 
 if (!$data.Contains($uid)) {
     write-host [+] updating
-    $newcontent = $data.replace('return null;', "require('$customJS_path') //$uid`n`t`t`t`t`t`treturn null;")
+    $newcontent = $data.replace('return null;', "require('.\\joplin_inject_code.js') //$uid`n`t`t`t`t`t`treturn null;")
     Set-Content $target -Value $newcontent
 }
 
 # copy current inject code to joplin directory
 cp ./joplin_inject_code.js $base_path\app\joplin_inject_code.js
+
 write-host [+] done.
 write-host [!] Update this js file and restart joplin to update injected code: $base_path\app\joplin_inject_code.js

@@ -2,9 +2,10 @@
 
 
 ## Patch Joplin
-1) Run patch_Joplin.ps1 and update path to 'joplin_inject_code.js' to patch Joplin with injected code
+1) Run patch_Joplin.ps1 
 ```
-cd this_directory
+git clone https://github.com/alecjmaly/joplin-customization.git
+cd joplin-customization
 powershell ./patch_Joplin.ps1
 ```
 2) Update 'joplin_inject_code.js' as needed and restart Joplin
