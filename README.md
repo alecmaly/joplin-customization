@@ -1,5 +1,5 @@
 # Joplin Customizations
-
+Inject custom code into Joplin + my other customizations
 
 ## Patch Joplin
 - Features
