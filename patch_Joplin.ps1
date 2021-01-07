@@ -7,7 +7,7 @@ enum patch_action {
 
 
 ####  script variables
-$action = [patch_action]::rebase
+$action = [patch_action]::update
 ####
 
 
@@ -20,7 +20,7 @@ if ($action -eq [patch_action]::rebase) {
       exit
     }
     
-    write-host [+] removing old app directory (if exists)
+    write-host "[+] removing old app directory (if exists)" 
     rm -Recurse -Force -Path $base_path\app\ 2>$null
 
     if (!(Test-Path -path "$base_path/app.asar")) {

@@ -134,10 +134,11 @@ function createStarsButtons() {
 
 function resetCustomSearch() {
   var search_input = document.querySelector('.rli-editor').querySelector('[placeholder="Search..."]')
-  
-  window.mysearch_index = 0 
-  window.mysearch_items = Array.from(document.querySelector('.noteTextViewer').contentWindow.document.querySelector('#rendered-md').children).filter(ele => { return ele.innerText.includes(search_input.value) && ele.style.display != 'none' })
-  document.querySelector('#search_index').innerText = (window.mysearch_index + 1) + ' / ' + window.mysearch_items.length
+  if (search_input) {
+    window.mysearch_index = 0 
+    window.mysearch_items = Array.from(document.querySelector('.noteTextViewer').contentWindow.document.querySelector('#rendered-md').children).filter(ele => { return ele.innerText.includes(search_input.value) && ele.style.display != 'none' })
+    document.querySelector('#search_index').innerText = (window.mysearch_index + 1) + ' / ' + window.mysearch_items.length
+  }
 }
 
 
