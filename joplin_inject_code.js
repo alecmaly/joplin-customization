@@ -140,6 +140,65 @@ function resetCustomSearch() {
   document.querySelector('#search_index').innerText = (window.mysearch_index + 1) + ' / ' + window.mysearch_items.length
 }
 
+
+// *********************
+// ****** ADD SEARCH TO NOTEBOOKS ****** //
+// *********************
+
+function searchNotebooks() {
+  if (document.querySelector('[placeholder="Search..."]') && document.querySelector('[placeholder="Search..."]').id != 'mysearch_tag') {
+    var search_input = document.querySelector('[placeholder="Search..."]')
+    search_input.id = 'mysearch_tag'
+
+    var items = Array.from(document.querySelector('[class="folders"]').children)
+
+    search_input.onchange = () => {
+      if (search_input.value == '') {  
+        // showAll
+        items.forEach(ele => {
+          ele.style.display = 'flex'
+        })
+      } else {
+        // hide
+        for (let i = 0; i < items.length; i++) {
+          if (items[i].innerText.split('\n')[0].toLowerCase().includes(search_input.value)) {
+            let shown_depths = [] 
+            let curr_depth
+            let j = i
+            let start_depth = parseInt(Array.from(items[j].classList).filter(c => { return c.startsWith('list-item-depth') })[0].split('-').slice(-1))
+
+            do {
+              curr_depth = parseInt(Array.from(items[j].classList).filter(c => { return c.startsWith('list-item-depth') })[0].split('-').slice(-1))
+              
+              if (!shown_depths.includes(curr_depth) && curr_depth <= start_depth) {
+                items[j].style.display = 'flex' 
+                shown_depths.push(curr_depth)
+              }
+              j--
+            } while (curr_depth > 0 && j > 0)
+
+          } else 
+            items[i].style.display = 'none'
+        }
+      }
+    }
+  }
+
+
+  if (document.querySelector('.rli-editor') && document.querySelector('.rli-editor').querySelector('.icon-notebooks')) {
+    let btn = document.querySelector('.rli-editor').querySelector('.icon-notebooks').parentElement
+      if (btn.id != 'mytag') {
+      btn.id = 'mytag'
+      btn.onclick = () => { 
+        
+        var items = Array.from(document.querySelector('[class="folders"]').children)
+        items.forEach(ele => ele.style.display = 'flex')
+      }
+    }
+  }
+
+}
+
 // *********************
 // ****** ADD SEARCH TO BOTTOM + SCROLL INTO VIEW ****** //
 // *********************
@@ -199,9 +258,10 @@ function createSearchButtons() {
 
 setInterval(
   () => {
+    searchNotebooks()
+
     if (document.querySelector('.rli-editor')) {
       createStarsButtons()
-
       createSearchButtons()
     }
 }, 1500);
