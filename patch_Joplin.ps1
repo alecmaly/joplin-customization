@@ -7,7 +7,7 @@ enum patch_action {
 
 
 ####  script variables
-$action = [patch_action]::update
+$action = [patch_action]::rebase
 ####
 
 

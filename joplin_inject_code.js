@@ -153,7 +153,7 @@ function searchNotebooks() {
 
     var items = Array.from(document.querySelector('[class="folders"]').children)
 
-    search_input.onchange = () => {
+    search_input.onkeyup = () => {
       if (search_input.value == '') {  
         // showAll
         items.forEach(ele => {
@@ -162,7 +162,8 @@ function searchNotebooks() {
       } else {
         // hide
         for (let i = 0; i < items.length; i++) {
-          if (items[i].innerText.split('\n')[0].toLowerCase().includes(search_input.value)) {
+          // If folder value contains any of the search terms
+          if (search_input.value.toLowerCase().split(' ').reduce((acc, val) => { if (items[i].innerText.split('\n')[0].toLowerCase().includes(val)) return acc; return false  }, true)) {
             let shown_depths = [] 
             let curr_depth
             let j = i
