@@ -6,6 +6,11 @@ Inject custom code into Joplin + my other customizations
   - Scroll into View for searches on rendered markdown page
   - Filtering page for all lines with *** and **** 
 
+1) Install node.js dependency
+```shell
+npm install -g asar
+```
+
 1) Run patch_Joplin.ps1 
 ```
 git clone https://github.com/alecjmaly/joplin-customization.git

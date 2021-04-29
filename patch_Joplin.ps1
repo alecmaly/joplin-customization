@@ -11,7 +11,8 @@ $action = [patch_action]::rebase
 ####
 
 
-$base_path = 'C:\Users\alecm\AppData\Local\Programs\Joplin\resources'
+# $base_path = $env:USERPROFILE + '\AppData\Local\Programs\Joplin\resources'
+$base_path = 'C:\Program Files\Joplin\resources'
 
 
 if ($action -eq [patch_action]::rebase) {
@@ -24,17 +25,17 @@ if ($action -eq [patch_action]::rebase) {
     rm -Recurse -Force -Path $base_path\app\ 2>$null
 
     if (!(Test-Path -path "$base_path/app.asar")) {
-        cp $base_path\app.asar.bak $base_path\app.asar
+        cp "$base_path\app.asar.bak" "$base_path\app.asar"
     } else {
         # create backup of asar file
         # backup + delete asar
-        cp $base_path\app.asar $base_path\app.asar.bak
+        cp "$base_path\app.asar" "$base_path\app.asar.bak"
     }
 
     
     write-host "[+] extracting"
-    asar extract $base_path\app.asar $base_path\app\
-    rm $base_path\app.asar 2>$null
+    asar extract "$base_path\app.asar" "$base_path\app"
+    rm "$base_path\app.asar" 2>$null
 }
 
 
