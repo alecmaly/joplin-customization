@@ -1,6 +1,10 @@
 # Joplin Customizations
 Inject custom code into Joplin + my other customizations
 
+<h3 style='color:red;font-weight:bold'>
+TESTED ON JOPLIN DESKTOP v. 2.1.9
+</h3>
+
 ## Patch Joplin
 - Features
   - Scroll into View for searches on rendered markdown page
@@ -21,13 +25,15 @@ powershell ./patch_Joplin.ps1
 
 
 
-## CSS
-Copy/paste contents of 'userstyle*.css' into Joplin's settings: Appearance > Custom stylesheet for rendered Markdown
 
 
 ## Other options
-- Editor font size: 11
+**Options > Appearance**
+- Editor font size: `12`
+- Editor Font Family: `Arial,Helvetica,sans-serif`
 
+### CSS Configs
+Copy/paste contents of `userstyle*.css` into Joplin's settings: **Appearance > Advanced Options > Custom stylesheet** for rendered Markdown
 
 
 

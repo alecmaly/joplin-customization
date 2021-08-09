@@ -151,7 +151,7 @@ function searchNotebooks() {
     var search_input = document.querySelector('[placeholder="Search..."]')
     search_input.id = 'mysearch_tag'
 
-    var items = Array.from(document.querySelector('[class="folders"]').children)
+    var items = Array.from(document.querySelector('[class^="folders"]').children)
 
     search_input.onkeyup = () => {
       if (search_input.value == '') {  
@@ -193,7 +193,7 @@ function searchNotebooks() {
       btn.id = 'mytag'
       btn.onclick = () => { 
         
-        var items = Array.from(document.querySelector('[class="folders"]').children)
+        var items = Array.from(document.querySelector('[class^="folders"]').children)
         items.forEach(ele => ele.style.display = 'flex')
       }
     }
@@ -254,6 +254,29 @@ function createSearchButtons() {
 }
 
 
+function createCopyButtons() {
+  if (document.querySelector('iframe.noteTextViewer').contentDocument.querySelector('#my_copy_button'))
+    return
+  
+    // select all code blocks that are not inline
+    var code_block = document.querySelector('iframe.noteTextViewer').contentDocument.querySelectorAll('code:not([class="inline-code"])')
+
+    Array.from(code_block).forEach(block => {
+        let copy_button = document.createElement('button')
+        copy_button.id = 'my_copy_button'
+        copy_button.style.position = 'relative'
+        copy_button.style.float = 'right'
+        copy_button.style.opacity = '.6'
+        copy_button.innerText = 'copy'
+        copy_button.onclick = (evt) => {
+            let text = evt.target.parentElement.querySelector('code').innerText
+            navigator.clipboard.writeText(text)
+        }
+        
+        block.parentElement.insertBefore(copy_button, block)
+    })    
+}
+
 // *********************
 // ****** MAIN LOOP
 // *********************
@@ -265,6 +288,7 @@ setInterval(
     if (document.querySelector('.rli-editor')) {
       createStarsButtons()
       createSearchButtons()
+      createCopyButtons()
     }
 }, 1500);
 
