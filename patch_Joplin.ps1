@@ -1,14 +1,10 @@
-﻿
-enum patch_action {
+﻿enum patch_action {
     rebase
     update  # copies over new version of joplin_inject_code.ps1 without extracting asar (faster)
 }
 
-
-
 ####  script variables
-$action = [patch_action]::update
-####
+$action = [patch_action]::rebase
 
 
 # $base_path = $env:USERPROFILE + '\AppData\Local\Programs\Joplin\resources'
