@@ -69,3 +69,7 @@ nav.table-of-contents li {
   width: 100%;
 }
 
+/*  fix code blocks */
+pre {
+    overflow-y: scroll;
+}
