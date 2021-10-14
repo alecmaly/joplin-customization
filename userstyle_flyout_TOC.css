@@ -66,10 +66,23 @@ nav.table-of-contents li {
 
 
 #rendered-md {
-  width: 100%;
+    width: 100%;
+    max-width: none;
 }
 
 /*  fix code blocks */
 pre {
     overflow-y: scroll;
 }
+
+/* fix width issues */
+.CodeMirror-sizer {
+    max-width: none
+}
+
+
+/* 
+.CodeMirror-sizer {
+    width: 100% !important;
+    max-width: none !important;
+} */
