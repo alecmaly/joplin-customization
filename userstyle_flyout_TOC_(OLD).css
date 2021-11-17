@@ -71,7 +71,8 @@ nav.table-of-contents li {
 
 /*  fix code blocks */
 pre {
-    overflow-y: scroll;
+    overflow-y: hidden;
+    overflow-x: scroll;
 }
 
 /* fix width issues */

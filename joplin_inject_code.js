@@ -277,6 +277,10 @@ function createCopyButtons() {
     })    
 }
 
+function resizeCodeEditor() {
+  document.querySelector('.codeMirrorEditor').parentElement.style['flex'] = '.55 1 0%'
+}
+
 // *********************
 // ****** MAIN LOOP
 // *********************
@@ -289,6 +293,7 @@ setInterval(
       createStarsButtons()
       createSearchButtons()
       createCopyButtons()
+      resizeCodeEditor()
     }
 }, 1500);
 

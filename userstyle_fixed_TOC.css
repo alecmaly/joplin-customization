@@ -9,6 +9,7 @@ li {
     margin-bottom: 3px;
 }
 
+
 nav.table-of-contents ul {
     list-style-type: none;
     margin-top: 0px;
@@ -41,6 +42,7 @@ nav.table-of-contents::after {
 
 
 nav.table-of-contents>ul {
+    /* background: #F8F8F8; */
     box-shadow: -5px 0px 10px 0px rgba(0,0,0,0.15);
 
     width: 20%;
@@ -77,9 +79,9 @@ nav.table-of-contents li {
 
 /*  fix code blocks */
 pre {
-    overflow-y: scroll;
+    overflow-y: hidden;
+    overflow-x: scroll;
 }
-
 
 /* 
 .CodeMirror-sizer {
