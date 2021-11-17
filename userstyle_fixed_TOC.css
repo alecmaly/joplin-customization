@@ -41,7 +41,6 @@ nav.table-of-contents::after {
 
 
 nav.table-of-contents>ul {
-    background: #F8F8F8;
     box-shadow: -5px 0px 10px 0px rgba(0,0,0,0.15);
 
     width: 20%;
